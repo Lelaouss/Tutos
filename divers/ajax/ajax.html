@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Ajax JS</title>
+		<meta charset="utf-8">
+		<meta name="description" content="Ajax JS">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<!-- main css and js -->
+		<script type="text/javascript" src="jquery/jquery-3-0-0.js"></script>
+		<script type="text/javascript">
+			function sendDatas() {
+				var datas = {
+					no_dossier : $('#no_dossier').val(),
+					nom : $('#nom').val(),
+					prenom : $('#prenom').val(),
+					email : $('#email').val() + "@afpa-lab.com",
+					adresse : $('#adresse').val(),
+					cp : $('#cp').val(),
+					ville : $('#ville').val()
+				}
+				$.ajax({
+						type: "POST",
+						url: "ajax.php",
+						async: false,
+						data: datas,
+						dataType: "json",
+						cache: false,
+					})
+					.done(function(monTableauduPHP) {
+						alert(monTableauduPHP.commentaire);
+						alert(monTableauduPHP.autre_message);
+						var sHTML= $('#div_resultat').html();
+						sHTML+= "<p>N° dossier : " + $('#no_dossier').val() + "</p>";
+						sHTML+= "<p>nom : " + $('#nom').val() + "</p>";
+						sHTML+= "<p>prenom : " + $('#prenom').val() + "</p>";
+						sHTML+= "<p>email : " + $('#email').val() + "@afpa-lab.com" + "</p>";
+						sHTML+= "<p>adresse : " + $('#adresse').val() + "</p>";
+						sHTML+= "<p>cp : " + $('#cp').val() + "</p>";
+						sHTML+= "<p>ville : " + $('#ville').val() + "</p>";
+						$('#no_dossier').val("");
+						$('#nom').val("");
+						$('#prenom').val("");
+						$('#email').val("");
+						$('#adresse').val("");
+						$('#cp').val("");
+						$('#ville').val("");
+						$('#div_resultat').html(sHTML);
+					})
+					.fail(function(err) {
+						alert('error : ' + err.status);
+					});
+			}
+
+		</script>
+	</head>
+
+<body>
+
+	<div id="page">
+		<header><!-- Entête de la zone considérée --></header>
+
+		<nav><!-- Nav. principale de la page --></nav>
+
+		<aside><!-- Les à-cotés de la page --></aside>
+
+		<section>
+		<!-- Contenu textuel de la page -->
+			<div id="div_resultat">
+			</div>
+			<div id="div_formulaire">
+				<p>no dossier : <input type="text" name="no_dossier" id="no_dossier" value=""></p>
+				<p>nom : <input type="text" name="nom" id="nom" value=""></p>
+				<p>prenom : <input type="text" name="prenom" id="prenom" value=""></p>
+				<p>adresse : <input type="text" name="adresse" id="adresse" value=""></p>
+				<p>email : <input type="text" name="email" id="email" value="">&nbsp;@afpa-lab.com</p>
+				<p>cp : <input type="text" name="cp" id="cp" value=""></p>
+				<p>ville : <input type="text" name="ville" id="ville" value=""></p>
+				<p>
+					<button id="btn_action_save" onClick="sendDatas()">ENREGISTRER</button>
+				</p>
+			</div>
+		</section>
+
+		<footer><!-- Pied-de-page de la page --></footer>
+	</div>
+
+</body>
+</html>
+

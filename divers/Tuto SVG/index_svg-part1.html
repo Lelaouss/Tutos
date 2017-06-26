@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>The SVG show</title>
+	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<style>
+        body               {background: #e3e2dd;font-family: 'Poiret One', cursive;}
+		main 		       {display:flex;flex-direction: column;margin:auto;text-align: left;color:black;height:100%;width:100vw;min-width:960px;}
+        pre                {font-family: 'Poiret One', cursive;}
+        input              {width:60px;}
+        nav                {position: fixed;width:250px;height:150px;right:0px;}
+        h2                 {text-decoration: underline; text-align: center;}
+		#theRektShow,
+        #theCircleShow     {display:flex;justify-content: space-around;align-items: center;padding: 3% 0;width:100vw;}
+		#theCircleShow     {margin: 5% 0}
+		#xpl               {display:flex;justify-content: space-around;flex-direction:column;align-items: center;margin: 5% 0}
+        #inputing_demo     {margin: 4% 0}
+        #wih_Dhollows      {width:640px;}
+		#whrItHpnsDemo     {width: 45vw;height: 300px;background: #eee;box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.45);}
+        #cod_wrapper       {width:100%}
+        #cod_wrapper,
+        #code_wrapper      {text-align: left;}
+        #buttRekt,
+        #buttCrcl          {width:150px;}
+        #inputing,
+        #inputingCrcl      {display:flex;flex-direction:column;align-items: flex-start;justify-content: space-between;height:100%;}
+        #showcase          {display:flex;flex-flow: column;align-items: center;}
+        #WrapperDhollows   {display: flex;flex-direction: column;align-items: center}
+        #preDhollows       {display: flex;flex-wrap: wrap;justify-content: center;}
+        #intro             {width:90%;margin:auto;}
+        #wih_icon1,
+        #wih_icon2,
+        #wih_icon3         {height:200px;width:240px;margin-top: 2%;}
+        #icon_show1,
+        #icon_show2,
+        #icon_show3        {fill:#f55;stroke:#000; stroke-width:2px; stroke-dasharray:622;stroke-dashoffset:622;opacity:1;transition:all 1s ease}
+        #icon_show1:hover  {stroke-dashoffset:0;transition:stroke-dashoffset 1s ease}
+        #icon_show2:hover  {fill:#55d1ff;transition:fill .5s ease}
+        #icon_show3:hover  {opacity:0;transition:opacity .5s ease}
+		.wih               {width: 300px;height: 300px;background: #eee;box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.45);}
+        .wih_wrapper       {display:flex;flex-direction:column;align-items: center;justify-content: space-between;height: 100%;}
+        .grow              {background: #ff8b8b;border: none;border-radius: 10px 10px 10px 10px;width:120px;height: 30px;}
+        .hoverColChg       {background: rgba(98, 29, 8, 0);border: 2px solid #000;border-radius: 10px 10px 10px 10px;width:120px;height: 30px;transition:all .5s ease .1s;}
+        .ghosting          {background: rgba(98, 29, 8, 0);border: 2px dotted #000;border-radius: 10px 10px 10px 10px;width:120px;height: 30px;}
+        .hoverColChg:hover {background: rgb(178, 45, 45);border: 2px solid #fff;border-radius: 10px 10px 10px 10px;width:120px;height: 30px;color:white;}
+        .valHglgt          {color:#f55;text-decoration: underline;}
+        .txt_left          {text-align: left;}
+        .txt_just          {text-align: justify;}
+        .txt_center        {text-align: center;}
+        .menuCellsClose    {transform-origin: 45% 100% 0px;transform: scale(0); transition:transform .5s cubic-bezier(.53, -0.44, .46, 1.45);}
+        .menuCellsOpen     {transform-origin: 45% 100% 0px;transform: scale(1); transition:transform .5s cubic-bezier(.53, -0.44, .46, 1.45);}
+        .float_l           {float:left;}
+        .resize            {font-size: 0.9em;}
+        
+	</style>
+	
+	<nav>
+	    <svg viewBox="-2 -2 504 260" id="menu" style="transform-origin: 50% 60% 0px; transform: translate3d(0px, 0px, 0px) rotateZ(163deg) scale(1); touch-action: none; -webkit-user-select: none;" >
+            <style> 
+                #menu                {display: block;margin: 0 auto;overflow:visible;}
+                a                    {cursor: pointer;outline: none;}
+                .item .sector        {transition: all .1s linear;fill: #272727;stroke: #111;}
+                .item:hover .sector,
+                .item:focus .sector     {fill: #494949;}
+                .menu-trigger           {fill: #f55;pointer-events: auto;transform:rotate(17deg) translateY(-90px) translateX(55px)}
+                .menu-trigger:hover,
+                .menu-trigger:focus     {cursor: pointer;}
+                symbol                  {overflow: visible;}
+                #symbolsContainer text  {transform: rotate(180deg);}
+            </style>
+            <g id="symbolsContainer" >
+                <symbol class="icon icon-" id="icon-1" viewBox="0 0 49 49">
+                    <!--Replace the contents of this symbol with the content of your icon-->
+                    <rect fill="none" stroke="#e3e2dd" stroke-width="1" width="100%" height="100%"></rect>
+                    <text fill="#e3e2dd" x="-45%" y="-45%" dy=".3em" text-anchor="middle" font-size="1.2em">1</text>
+                </symbol>
+
+                <symbol class="icon icon-" id="icon-2" viewBox="0 0 49 49">
+                    <!--Replace the contents of this symbol with the content of your icon-->
+                    <rect fill="none" stroke="#e3e2dd" stroke-width="1" width="100%" height="100%"></rect>
+                    <text fill="#e3e2dd" x="-45%" y="-45%" dy=".3em" text-anchor="middle" font-size="1.2em">2</text>
+                </symbol>
+
+                <symbol class="icon icon-" id="icon-3" viewBox="0 0 49 49">
+                    <!--Replace the contents of this symbol with the content of your icon-->
+                    <rect fill="none" stroke="#e3e2dd" stroke-width="1" width="100%" height="100%"></rect>
+                    <text fill="#e3e2dd" x="-45%" y="-45%" dy=".3em" text-anchor="middle" font-size="1.2em">3</text>
+                </symbol>
+
+                <symbol class="icon icon-" id="icon-4" viewBox="0 0 49 49">
+                    <!--Replace the contents of this symbol with the content of your icon-->
+                    <rect fill="none" stroke="#e3e2dd" stroke-width="1" width="100%" height="100%"></rect>
+                    <text fill="#e3e2dd" x="-45%" y="-45%" dy=".3em" text-anchor="middle" font-size="1.2em">4</text>
+                </symbol>
+
+				<!--
+                <symbol class="icon icon-" id="icon-5" viewBox="0 0 49 49">
+                    Replace the contents of this symbol with the content of your icon>
+                    <rect fill="none" stroke="#e3e2dd" stroke-width="1" width="100%" height="100%"></rect>
+                    <text fill="#e3e2dd" x="-45%" y="-45%" dy=".3em" text-anchor="middle" font-size="1.2em">5</text>
+                </symbol>
+				-->
+
+            </g>
+            <g id="itemsContainer" class="menuCellsClose">
+                <a class="item" id="item-1" role="link" tabindex="0" xlink:href="#definition" xlink:title=" " transform="matrix(1,0,0,1,0,0)" data-svg-origin="250 250" style="">
+                    <path fill="none" stroke="#111" d="M370,250 l130,0 A250,250 0 0,0 457.002207787005,109.82123566208182 l-107.64114804924259,72.89295745571744 A120,120 0 0,1 370,250" class="sector"></path>
+                    <use xlink:href="#icon-1" width="49" height="49" x="403.3226623535156" y="170.9554901123047" transform="rotate(72.94736842105263 427.8226623535156 195.4554901123047)"></use>
+                </a>
+                <a class="item" id="item-2" role="link" tabindex="0" xlink:href="#types" xlink:title=" " transform="matrix(0.80412,-0.59445,0.59445,0.80412,-99.64587277114737,197.58088464975157)" data-svg-origin="250 250" style="">
+                    <path fill="none" stroke="#111" d="M370,250 l130,0 A250,250 0 0,0 457.002207787005,109.82123566208182 l-107.64114804924259,72.89295745571744 A120,120 0 0,1 370,250" class="sector"></path>
+                    <use xlink:href="#icon-2" width="49" height="49" x="403.3226623535156" y="170.9554901123047" transform="rotate(72.94736842105263 427.8226623535156 195.4554901123047)"></use>
+                </a>
+                <a class="item" id="item-3" role="link" tabindex="0" xlink:href="#handson" xlink:title=" " transform="matrix(0.29325,-0.95603,0.95603,0.29325,-62.32145472970558,415.69643603747323)" data-svg-origin="250 250" style="">
+                    <path fill="none" stroke="#111" d="M370,250 l130,0 A250,250 0 0,0 457.002207787005,109.82123566208182 l-107.64114804924259,72.89295745571744 A120,120 0 0,1 370,250" class="sector"></path>
+                    <use xlink:href="#icon-3" width="49" height="49" x="403.3226623535156" y="170.9554901123047" transform="rotate(72.94736842105263 427.8226623535156 195.4554901123047)"></use>
+                </a>
+                <a class="item" id="item-4" role="link" tabindex="0" xlink:href="#animatit" xlink:title=" " transform="matrix(-0.3325,-0.9431,0.9431,-0.3325,97.35178482732286,568.9020576989055)" data-svg-origin="250 250" style="">
+                    <path fill="none" stroke="#111" d="M370,250 l130,0 A250,250 0 0,0 457.002207787005,109.82123566208182 l-107.64114804924259,72.89295745571744 A120,120 0 0,1 370,250" class="sector"></path>
+                    <use xlink:href="#icon-4" width="49" height="49" x="403.3226623535156" y="170.9554901123047" transform="rotate(72.94736842105263 427.8226623535156 195.4554901123047)"></use>
+                </a>
+				<!--
+                <a class="item" id="item-5" role="link" tabindex="0" xlink:href="#showtime" xlink:title=" " transform="matrix(-0.828,-0.56071,0.56071,-0.828,316.8234434490868,597.1809721249232)" data-svg-origin="250 250" style="">
+                    <path fill="none" stroke="#111" d="M370,250 l130,0 A250,250 0 0,0 457.002207787005,109.82123566208182 l-107.64114804924259,72.89295745571744 A120,120 0 0,1 370,250" class="sector"></path>
+                    <use xlink:href="#icon-5" width="49" height="49" x="403.3226623535156" y="170.9554901123047" transform="rotate(72.94736842105263 427.8226623535156 195.4554901123047)"></use>
+                </a>
+				-->
+            </g>
+            <g id="trigger" class="trigger menu-trigger closed" role="button" onclick="toggleMenu()">
+                <circle cx="250" cy="250" r="50" ></circle>
+                <g id="layer1">
+                    <rect id="rect4136" width="65" height="6" x="218" y="247" ry="2" rx="2" fill="#e3e2dd" />
+                    <rect id="rect4152" width="65" height="6" x="218" y="227" rx="2" ry="2" fill="#e3e2dd"/>
+                    <rect id="rect4154" width="65" height="6" x="218" y="267" rx="2" ry="2" fill="#e3e2dd"/>
+                </g>
+
+            </g>
+        </svg>
+	</nav>
+<main>
+    
+    <div id="intro" class="txt_just">
+        <div>
+            <h1 class="txt_center">Le SVG, facile et pratique.</h1>
+
+            <div>
+
+                <div id="sommaire" class="txt_just">
+                    <h2>Sommaire:</h2>
+                    <ol>
+                        <li>définition du SVG</li>
+                        <li>Les types et attributs</li>
+                        <li>Prise en main de formes simples</li>
+                        <li>Animation</li>
+                    </ol>
+                </div>
+
+
+                <h2 id="definition">I Définition du SVG</h2>
+                <h3>Aussi simple qu'une balise HTML, le SVG vous permet de donner corps à vos idées. Une petite introduction s'impose.</h3>
+                <p> 
+                    Qu'est ce que le SVG exactement ? C'est la version courte de Scalable Verctor Graphics : littéralement, des graphiques vectoriels redimensionnable. Comme tout bon vécteur sa résolution est totalement indépendante de sa taille; il s'adaptera et sera toujours net même s'il devait être imprimé sur un mur de 6 mètres de haut.
+                <br>Au-delà du seul coté vectoriel , l'intérêt du SVG c'est sa facilité d'accès ; en effet, c'est aussi du code, lisible et compréhensible par un humain, qui ressemble beaucoup a du HTML.
+                </p>
+                <span>Allant du plus simple des carrés à l'illustration haute définition animée, les possibilités du SVG sont vastes.</span>
+			</div>
+			
+			<div>
+				<h2 id="types">II Les types et attributs</h2>
+				<h3>Un SVG est constitué de plusieurs éléments :</h3>
+				<p>Tout d'abord une balise <span class="valHglgt">&lt;svg&gt;</span> dans laquelle on placera les éléments à afficher:</p>
+				<ul>
+					<li>il peux s'agir d'un <span class="valHglgt">&lt;cercle&gt;</span>.</li>
+					<li>d'un <span class="valHglgt">&lt;rect&gt;</span> (rectangle).</li>
+					<li>d'une <span class="valHglgt">&lt;ellipse&gt;</span>.</li>
+					<li>ou bien d'un <span class="valHglgt">&lt;path&gt;</span> (chemin).</li>
+				</ul>
+				<p>
+				Les trois premiers parlent d'eux même. La véritable magie s'opère quand on s'attaque aux chemins, car c'est à travers eux que l'on pourra créer des icons personnalisés, des formes géométriques complexes et même des illustrations entières.
+				</p>
+				<p>
+					Ces éléments sont modifiables à travers trois catégories d'attributs : 
+				</p>
+				<ul>
+					<li>le positionnement. </li>
+					<li>la forme.</li>
+					<li>le style.</li>
+				</ul>
+				<p>
+					"width" et "height" dans la balise <span class="valHglgt">&lt;svg&gt;</span> représente l'espace que prend le canevas du SVG, la zone dans laquelle les éléments de la balise seront visibles ; au delà ils sont masqués, sauf si c'est explicité à l'inverse. 
+				</p>
+				<p>
+					Il est intéressant de savoir que le SVG accepte des valeurs en % pour ces attributs, le rendant ainsi plus malléable.
+				</p>
+				<p> 
+					Les rect ont eux aussi des attributs "height" et "width" ainsi que "x" et "y" pour les positionner sur ses deux axes.
+				</p>
+				<p> 
+				Les cercles et ellipses se voient octroyer "cx" et "cy" pour leur positionnement, le cercle utilise "r" pour décrire son rayon et l'ellipse "rx" et "ry" pour les siens.
+				</p>
+				<p>
+					Les chemins eux sortent un peu du lot, ils n'ont qu'un seul attribut de positionnement : "d". Cependant, cet attribut se composera d'une succession de commandes, suivies de coordonnées en px, pour les axes x et y de chacun des points les composant. Les différentes commandes disponibles sont :
+				</p>
+				<ul>
+					<li>M = moveto</li>
+					<li>L = lineto</li>
+					<li>H = horizontal lineto</li>
+					<li>V = vertical lineto</li>
+					<li>C = curveto</li>
+					<li>S = smooth curveto</li>
+					<li>Q = quadratic Bézier curve</li>
+					<li>T = smooth quadratic Bézier curveto</li>
+					<li>A = elliptical Arc</li>
+					<li>Z = closepath</li>
+				</ul>
+				<h3>
+					Suffit pour la théorie. Maintenant, place à quelques exemples concrets.
+				</h3>
+			</div>
+			<div>
+				<h2 id="handson">III Prise en main</h2>
+			</div>
+        </div>
+    </div>
+	<h3>Et voici notre rectangle :</h3>
+	<div id="theRektShow">
+		<div id="inputing">
+			<p>Ici vous contrôlez la position sur l'axe X (horizontale) :</p>
+			<input type="text" id="xRekt" class="x" value="25%" onkeyup="textIt(); spannify(this); xRect()" onfocus="spannify(this)" onblur="textIt()">
+			<p>Par ici on gère la position Y (verticale) :</p>
+			<input type="text" id="yRekt" class="y" value="25%" onkeyup="textIt(); spannify(this); xRect()" onfocus="spannify(this)" onblur="textIt()">
+			<p>On peux lui donner des airs de grandeur (height) :</p>
+			<input type="text" id="heightRekt" class="height" value="50%" onkeyup="textIt(); spannify(this); xRect()" onfocus="spannify(this)" onblur="textIt()">
+			<p>Et même faire que ça déborde un peu sur les côtés (width) :</p>
+			<input type="text" id="widthRekt" class="width" value="50%" onkeyup="textIt(); spannify(this); xRect()" onfocus="spannify(this)" onblur="textIt()">
+			<p>Après la carosserie, vient la peinture (fill) :</p>
+			<input type="text" id="fillRekt" class="fill" value="#f55" onkeyup="textIt(); spannify(this); xRect()" onfocus="spannify(this)" onblur="textIt()">
+			<p>Et bien sûr, l'enrobage (la couleur du contour : stroke) :</p>
+			<input type="text" id="strokeRekt" class="stroke" value="#000" onkeyup="textIt(); spannify(this); xRect()" onfocus="spannify(this)" onblur="textIt()">
+			<p>Enrobage à dimensions variables (stroke-width) :</p>
+			<input type="text" id="stroke-widthRekt" class="stroke-width" value="1%" onkeyup="textIt(); spannify(this); xRect()" onfocus="spannify(this)" onblur="textIt()">
+		</div>
+		<div class="wih_wrapper">
+			<div id="whrItHpnsRct" class="wih">
+				<svg width="100%" height="100%">
+					<rect id="rect" x="25%" y="25%" width="50%" height="50%" fill="#f55" stroke="#000" stroke-width="1%" />
+				</svg>
+			</div>
+			<div id="cod_wrapper" class="resize">
+				<pre>&lt;svg width='100%' height='100%'&gt;</pre>
+				<pre id="rektCode"></pre>
+				<pre>&lt;/svg&gt;</pre>
+			</div>
+		</div>
+	</div>
+	<h3>Il en va de même pour un cercle :</h3>
+	<div id="theCircleShow">
+		<div id="inputingCrcl">
+			<p>Position en X :</p>
+			<input type="text" id="xCrcl" class="cx" value="50%" onkeyup="textItCrcl(); spannifyC(this); xCrcl()" onfocus="spannifyC(this)" onblur="textItCrcl()">
+			<p>Position en Y :</p>
+			<input type="text" id="yCrcl" class="cy" value="50%" onkeyup="textItCrcl(); spannifyC(this); xCrcl()" onfocus="spannifyC(this)" onblur="textItCrcl()">
+			<p>Pour gérer la taille on agit sur le rayon (r) :</p>
+			<input type="text" id="rCrcl" class="r" value="49%" onkeyup="textItCrcl(); spannifyC(this); xCrcl()" onfocus="spannifyC(this)" onblur="textItCrcl()">
+			<p>Couleur du Cercle :</p>
+			<input type="text" id="fillCrcl" class="fill" value="#f55" onkeyup="textItCrcl(); spannifyC(this); xCrcl()" onfocus="spannifyC(this)" onblur="textItCrcl()">
+			<p>Couleur du contour :</p>
+			<input type="text" id="strokeCrcl" class="stroke" value="#000" onkeyup="textItCrcl(); spannifyC(this); xCrcl()" onfocus="spannifyC(this)" onblur="textItCrcl()">
+			<p>Largeur du contour :</p>
+			<input type="text" id="stroke-widthCrcl" class="stroke-width" value="1%" onkeyup="textItCrcl(); spannifyC(this); xCrcl()" onfocus="spannifyC(this)" onblur="textItCrcl()">
+		</div>
+		<div class="wih_wrapper">
+			<div id="whrItHpnsCrcl" class="wih">
+				<svg width="100%" height="100%">
+					<circle id="Crcl" cx="50%" cy="50%" r="40%" fill="#f55" stroke="#000" stroke-width="1%" />
+				</svg>
+			</div>
+			<div id="code_wrapper" class="resize">
+				<pre>&lt;svg width='100%' height='100%'&gt;</pre>
+				<pre id="crclCode"></pre>
+				<pre>&lt;/svg&gt;</pre>
+			</div>
+		</div>
+	</div>
+	<h2 id="animatit">IV Animation</h2>
+	<div id="showcase">
+		<div id="WrapperDhollows">
+			<h3>Une animation losange / Cercle / triangle :</h3>
+			<div id="wih_Dhollows" class="wih">
+				<svg width="100%" height="100%">
+					<rect x="320" y="23" width="28%" height="60%" fill="rgba(255, 85, 85, 0.37)" stroke="#000" stroke-width="1%" transform="rotate(45 320 23)">
+						<animate attributeName="x" begin="click" dur="0.5s" from="320" to="120" fill="freeze" />
+						<animateTransform attributeName="transform" begin="click" dur="0.5s" type="rotate" from="45 320 23" to="45 120 23" fill="freeze" />
+					</rect>
+					<circle cx="50%" cy="50%" r=18% fill="rgba(255, 85, 85, 0.37)" stroke="#000" stroke-width="1%">
+						<animate attributeName="cx" begin="click" dur="0.5s" from="50%" to="80%" fill="freeze" />
+					</circle>
+					<path d="M320 62 L245 200 L394 200 Z" fill="none" stroke="#000" stroke-width="1%" />
+				</svg>
+			</div>
+			<h3>
+				Ci-dessous vous trouverez le code permettant d'animer le SVG ci-dessus, lorsque l'on clique dessus.
+			</h3>
+			<pre id="preDhollows" class="txt_left resize">
+			   <p>
+					&lt;rect x="320"
+						y=23
+						width="28%" 
+						height="60%" 
+						fill="rgba(255, 216, 0, 0.07)" 
+						stroke="#000" 
+						stroke-width="1%" 
+						transform="rotate(45 320 23)"
+					&gt;
+				</p>
+				<p>
+					&lt;animate
+						attributeName="x"
+						begin="click"
+						dur="0.5s"
+						from="320"
+						to="120"
+						fill="freeze"
+					/&gt;
+				</p>
+				<p>
+					&lt;animateTransform
+						attributeName="transform"
+						begin="click"
+						dur="0.5s"
+						type="rotate"
+						from="45 320 23"
+						to="45 120 23"
+						fill="freeze"
+					/&gt;
+				</p>
+				<p>
+				   &lt;circle 
+					   cx="50%" 
+					   cy="50%" 
+					   r=18% 
+					   fill="rgba(255, 216, 0, 0.07)" 
+					   stroke="#000" 
+					   stroke-width="1%"
+					&gt;
+				</p>
+				<p>
+					&lt;animate
+						attributeName="cx"
+						begin="click"
+						dur="0.5s"
+						from="50%"
+						to="80%"
+						fill="freeze"
+					/&gt;
+				</p>
+				<p>
+					&lt;path
+						d="M320 62 L245 200 L394 200 Z" 
+						fill="none" 
+						stroke="#000" 
+						stroke-width="1%"
+					/&gt;
+				</p>
+			</pre>
+		</div>
+	<h3>Une animation avec des morceaux de cercles :</h3>
+		<div id="possibilities" class="wih">
+			<svg width="100%" height="100%">
+				<circle cx="50%" cy="50%" r="30%" fill="none" stroke="#000" stroke-width="1%" stroke-dasharray="94" stroke-dashoffset="94" transform="rotation">
+					<animateTransform attributeName="transform" begin="0s" dur="4s" type="rotate" from="0 150 150" to="360 150 150" repeatCount="indefinite" />
+				</circle>
+				<circle cx="50%" cy="50%" r="15%" fill="none" stroke="#000" stroke-width="1%" stroke-dasharray="47">
+					<animateTransform attributeName="transform" begin="0s" dur="4s" type="rotate" from="0 150 150" to="-360 150 150" repeatCount="indefinite" />
+				</circle>
+			</svg>
+		</div>
+		<pre class="txt_left resize">
+				   
+				//Faire tourner le cercle extérieure:
+				   
+					&lt;animateTransform attributeName="transform" begin="0s" dur="4s" type="rotate" from="0 150 150" to="360 150 150" repeatCount="indefinite" /&gt;
+					
+				//Faire tourner le cercle intérieur:
+				   
+					&lt;animateTransform attributeName="transform" begin="0s" dur="4s" type="rotate" from="0 150 150" to="-360 150 150" repeatCount="indefinite" /&gt;
+			   
+		</pre>
+	</div>
+	<div id="xpl">
+		<h3>Et enfin, d'autres démonstrations de graphismes dynamiques ; le SVG nous permet de changer le contenu visuel à la volée :</h3>
+		<div id="show_content">
+			<div id="inputing_demo">
+				<button class="grow" onclick="growDemo()">Click Me !</button>
+				<button class="hoverColChg" onclick="hoverColChgDemo()" onmouseenter="hoverColChgDemo()" onmouseout="hoverColChgBckDemo()">Hover Me !</button>
+				<button class="ghosting" onclick="ghostingDemo()">Nervermind !</button>
+			</div>
+			<div id="whrItHpnsDemo">
+				<svg id="rect1" width="15%" height="1%">
+					<rect class="rectFillNone rectFillF55" id="rect1Fill" x="0" y="0" width="90%" height="100%" fill="#f55" stroke="#000" stroke-width="0" />
+				</svg>
+				<svg id="rect2" width="15%" height="1%">
+					<rect class="rectFillNone rectFillF55" id="rect2Fill" x="0" y="0" width="90%" height="100%" fill="#55e5ff" stroke="#000" stroke-width="0" />
+				</svg>
+				<svg id="rect3" width="15%" height="1%">
+					<rect class="rectFillNone rectFillF55" id="rect3Fill" x="0" y="0" width="90%" height="100%" fill="#76ff55" stroke="#000" stroke-width="0" />
+				</svg>
+				<svg id="rect4" width="15%" height="1%">
+					<rect class="rectFillNone rectFillF55" id="rect4Fill" x="0" y="0" width="90%" height="100%" fill="#ffff55" stroke="#000" stroke-width="0" />
+				</svg>
+				<svg id="rect5" width="15%" height="1%">
+					<rect class="rectFillNone rectFillF55" id="rect5Fill" x="0" y="0" width="90%" height="100%" fill="#b755ff" stroke="#000" stroke-width="0" />
+				</svg>
+				<svg width="1%" height="98%">
+					<rect class="rectFillNone rectFillF55" id="rect6" x="0" y="0" width="1%" height="100%" fill="none" stroke="#000" stroke-width="0" />
+				</svg>
+				<hr>
+			</div>
+	<h3>Et aussi :</h3>
+			<div>
+				<div id="wih_icon1" class="float_l">
+					<svg height="100%" width="100%">
+						<path d="M567.26,320.22H712.54a4.94,4.94,0,0,0,.78.37,9.16,9.16,0,0,1,6.33,8.85q-0.08,70.47,0,140.94a10.61,10.61,0,0,1-.29,2.73,9,9,0,0,1-8.89,6.57q-20.63-.21-41.26-0.23c-8.29,0-16.59.18-24.88,0.19-25.1,0-50.19,0-75.29,0a9,9,0,0,1-8.84-8.87q0.05-70.91,0-141.83a8.08,8.08,0,0,1,3.32-6.78A26.46,26.46,0,0,1,567.26,320.22Zm83.41,118.92c0.35,0,.61.07,0.86,0.07q29.29,0,58.57,0a0.86,0.86,0,0,0,1.07-1.06c0-4.5,0-9,0-13.51a33.29,33.29,0,0,0-3.06-14c-3.35-7.18-8.65-12.71-15-17.2a84.13,84.13,0,0,0-16.59-8.95,78,78,0,0,0-20.64-5c-3.43-.4-6.92-0.37-10.38-0.55-1.6-.08-3.21-0.18-4.91-0.28V358.54H620.42v1.26c0,6.53,0,13.07,0,19.6a1.1,1.1,0,0,1-1,1.34c-1.84.36-3.68,0.76-5.49,1.24A81.89,81.89,0,0,0,593.43,390a55.81,55.81,0,0,0-14.64,11.8c-5.37,6.26-8.53,13.4-8.73,21.69-0.12,5-.05,10-0.07,14.95a4,4,0,0,0,.11.65h70.49V389.48h1.29a71.16,71.16,0,0,1,16.17,2,55.33,55.33,0,0,1,19.81,8.66A39.27,39.27,0,0,1,690,414.38c0.72,1.42,1.27,2.92,1.94,4.49H667.65c0-.44,0-0.8,0-1.17,0-2.84,0-5.68,0-8.53a2,2,0,0,0-.49-1.36,23.32,23.32,0,0,0-2.84-2.08,24.94,24.94,0,0,0-9.1-3.24c-1.46-.27-3-0.38-4.53-0.57v37.2Z" transform="translate(-555 -315)" id="icon_show1" />
+					</svg>
+				</div>
+				<div id="wih_icon2" class="float_l">
+					<svg height="100%" width="100%">
+						<path d="M567.26,320.22H712.54a4.94,4.94,0,0,0,.78.37,9.16,9.16,0,0,1,6.33,8.85q-0.08,70.47,0,140.94a10.61,10.61,0,0,1-.29,2.73,9,9,0,0,1-8.89,6.57q-20.63-.21-41.26-0.23c-8.29,0-16.59.18-24.88,0.19-25.1,0-50.19,0-75.29,0a9,9,0,0,1-8.84-8.87q0.05-70.91,0-141.83a8.08,8.08,0,0,1,3.32-6.78A26.46,26.46,0,0,1,567.26,320.22Zm83.41,118.92c0.35,0,.61.07,0.86,0.07q29.29,0,58.57,0a0.86,0.86,0,0,0,1.07-1.06c0-4.5,0-9,0-13.51a33.29,33.29,0,0,0-3.06-14c-3.35-7.18-8.65-12.71-15-17.2a84.13,84.13,0,0,0-16.59-8.95,78,78,0,0,0-20.64-5c-3.43-.4-6.92-0.37-10.38-0.55-1.6-.08-3.21-0.18-4.91-0.28V358.54H620.42v1.26c0,6.53,0,13.07,0,19.6a1.1,1.1,0,0,1-1,1.34c-1.84.36-3.68,0.76-5.49,1.24A81.89,81.89,0,0,0,593.43,390a55.81,55.81,0,0,0-14.64,11.8c-5.37,6.26-8.53,13.4-8.73,21.69-0.12,5-.05,10-0.07,14.95a4,4,0,0,0,.11.65h70.49V389.48h1.29a71.16,71.16,0,0,1,16.17,2,55.33,55.33,0,0,1,19.81,8.66A39.27,39.27,0,0,1,690,414.38c0.72,1.42,1.27,2.92,1.94,4.49H667.65c0-.44,0-0.8,0-1.17,0-2.84,0-5.68,0-8.53a2,2,0,0,0-.49-1.36,23.32,23.32,0,0,0-2.84-2.08,24.94,24.94,0,0,0-9.1-3.24c-1.46-.27-3-0.38-4.53-0.57v37.2Z" transform="translate(-555 -315)" id="icon_show2" />
+					</svg>
+				</div>
+				<div id="wih_icon3" class="float_l">
+					<svg height="100%" width="100%">
+						<path d="M567.26,320.22H712.54a4.94,4.94,0,0,0,.78.37,9.16,9.16,0,0,1,6.33,8.85q-0.08,70.47,0,140.94a10.61,10.61,0,0,1-.29,2.73,9,9,0,0,1-8.89,6.57q-20.63-.21-41.26-0.23c-8.29,0-16.59.18-24.88,0.19-25.1,0-50.19,0-75.29,0a9,9,0,0,1-8.84-8.87q0.05-70.91,0-141.83a8.08,8.08,0,0,1,3.32-6.78A26.46,26.46,0,0,1,567.26,320.22Zm83.41,118.92c0.35,0,.61.07,0.86,0.07q29.29,0,58.57,0a0.86,0.86,0,0,0,1.07-1.06c0-4.5,0-9,0-13.51a33.29,33.29,0,0,0-3.06-14c-3.35-7.18-8.65-12.71-15-17.2a84.13,84.13,0,0,0-16.59-8.95,78,78,0,0,0-20.64-5c-3.43-.4-6.92-0.37-10.38-0.55-1.6-.08-3.21-0.18-4.91-0.28V358.54H620.42v1.26c0,6.53,0,13.07,0,19.6a1.1,1.1,0,0,1-1,1.34c-1.84.36-3.68,0.76-5.49,1.24A81.89,81.89,0,0,0,593.43,390a55.81,55.81,0,0,0-14.64,11.8c-5.37,6.26-8.53,13.4-8.73,21.69-0.12,5-.05,10-0.07,14.95a4,4,0,0,0,.11.65h70.49V389.48h1.29a71.16,71.16,0,0,1,16.17,2,55.33,55.33,0,0,1,19.81,8.66A39.27,39.27,0,0,1,690,414.38c0.72,1.42,1.27,2.92,1.94,4.49H667.65c0-.44,0-0.8,0-1.17,0-2.84,0-5.68,0-8.53a2,2,0,0,0-.49-1.36,23.32,23.32,0,0,0-2.84-2.08,24.94,24.94,0,0,0-9.1-3.24c-1.46-.27-3-0.38-4.53-0.57v37.2Z" transform="translate(-555 -315)" id="icon_show3" />
+					</svg>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+	<script>
+        
+        function slctID(id){return document.getElementById(id);}
+        
+        /*menu*/
+        function toggleMenu(){
+            if(slctID('trigger').classList.contains('closed')){
+                slctID('trigger').classList.remove('closed');
+                slctID('trigger').classList.add('opened');
+                slctID('itemsContainer').classList.remove('menuCellsClose')
+                slctID('itemsContainer').classList.add('menuCellsOpen')
+            }else{
+                slctID('trigger').classList.remove('opened');
+                slctID('trigger').classList.add('closed');
+                slctID('itemsContainer').classList.remove('menuCellsOpen')
+                slctID('itemsContainer').classList.add('menuCellsClose')
+            }
+        }
+        
+        /* display the svg code of the rect under it */
+        
+        var sRekt;
+        function textIt (){
+                sRekt =
+                    "\t&lt;rect id='rect' x='" +slctID('xRekt').value +
+                    "' y='" +slctID('yRekt').value +
+                    "' width='" +slctID('widthRekt').value +
+                    "' height='" +slctID('heightRekt').value +
+                    "' fill='" +slctID('fillRekt').value +
+                    "' stroke='" +slctID('strokeRekt').value +
+                    "' stroke-width='" +slctID('stroke-widthRekt').value +"' &gt;";
+            var rektCod = slctID('whrItHpnsRct').innerHTML;
+            slctID('rektCode').innerHTML = sRekt;
+        }
+        textIt();
+        
+        /*underline and change the color of the selected element*/
+        
+        function spannify (element){
+            var sRektSplit = sRekt.split(" ");
+            for (var k = 0; k < sRektSplit.length; ++k) {
+                if (sRektSplit[k].search(element.className) != -1) {
+                    sRektSplit[k] = '<span class="valHglgt">'+sRektSplit[k]+'</span>';
+                    break;
+                }
+            }
+            sRekt = sRektSplit.join(" ");
+            slctID('rektCode').innerHTML = sRekt;
+        }
+        
+       
+		//set the properties of the rect
+		function xRect() {
+			var xRect = slctID("xRekt").value;
+			slctID("rect").setAttribute("x", xRect);
+            var yRect = slctID("yRekt").value;
+			slctID("rect").setAttribute("y", yRect);
+            var hRect = slctID("heightRekt").value;
+			slctID("rect").setAttribute("height", hRect);
+            var wRect = slctID("widthRekt").value;
+			slctID("rect").setAttribute("width", wRect);
+            var fillRect = slctID("fillRekt").value;
+			slctID("rect").setAttribute("fill", fillRect);
+            var strokeRect = slctID("strokeRekt").value;
+			slctID("rect").setAttribute("stroke", strokeRect);
+            var strokeWRect = slctID("stroke-widthRekt").value;
+			slctID("rect").setAttribute("stroke-width", strokeWRect);
+		}
+        
+		/*      Setting up the circle show       */
+		
+		//set the properties of the circle
+		function xCrcl() {
+			var xCrcl = slctID("xCrcl").value;
+			slctID("Crcl").setAttribute("cx", xCrcl);
+            var yCrcl = slctID("yCrcl").value;
+			slctID("Crcl").setAttribute("cy", yCrcl);
+            var rCrcl = slctID("rCrcl").value;
+			slctID("Crcl").setAttribute("r", rCrcl);
+            var fillCrcl = slctID("fillCrcl").value;
+			slctID("Crcl").setAttribute("fill", fillCrcl);
+            var strokeCrcl = slctID("strokeCrcl").value;
+			slctID("Crcl").setAttribute("stroke", strokeCrcl);
+            var strokeWCrcl = slctID("stroke-widthCrcl").value;
+			slctID("Crcl").setAttribute("stroke-width", strokeWCrcl);
+		}
+        
+         /* display the svg code of the circle under it */
+        
+        var sCircle;
+        function textItCrcl (){
+                sCircle = "\t&lt;circle id='Crcl' cx='" +slctID('xCrcl').value +
+                    "' cy='" +slctID('yCrcl').value +
+                    "' r='" +slctID('rCrcl').value +
+                    "' fill='" +slctID('fillCrcl').value +
+                    "' stroke='" +slctID('strokeCrcl').value +
+                    "' stroke-width='" +slctID('stroke-widthCrcl').value +
+                    "' &gt;";
+            var crclCod = slctID('whrItHpnsCrcl').innerHTML;
+            slctID('crclCode').innerHTML = sCircle;
+        }
+        textItCrcl();
+        
+        /*underline and change the color of the selected element*/
+        
+        function spannifyC (element){
+            var sCSplit = sCircle.split(" ");
+            for (var k = 0; k < sCSplit.length; ++k) {
+                if (sCSplit[k].search(element.className) != -1) {
+                    sCSplit[k] = '<span class="valHglgt">'+sCSplit[k]+'</span>';
+                    break;
+                }
+            }
+            sCircle = sCSplit.join(" ");
+            slctID('crclCode').innerHTML = sCircle;
+        }
+        
+/*        setting up the Demo*/
+        
+        
+        //grow the demo rects
+		function growDemo() {
+			slctID('rect1').setAttribute("height", "5%");
+            slctID("rect2").setAttribute("height", "25%");
+            slctID("rect3").setAttribute("height", "95%");
+            slctID("rect4").setAttribute("height", "45%");
+            slctID("rect5").setAttribute("height", "12%");
+		}
+        
+        //change the demo rects colors
+		function hoverColChgDemo() {
+            slctID("rect1Fill").setAttribute("fill", "#f55");
+            slctID("rect2Fill").setAttribute("fill", "#f55");
+            slctID("rect3Fill").setAttribute("fill", "#f55");
+            slctID("rect4Fill").setAttribute("fill", "#f55");
+            slctID("rect5Fill").setAttribute("fill", "#f55");
+		}
+        
+        //change the demo rects colors back
+		function hoverColChgBckDemo() {
+			slctID("rect1Fill").setAttribute("fill", "#f55");
+            slctID("rect2Fill").setAttribute("fill", "#55e5ff");
+            slctID("rect3Fill").setAttribute("fill", "#76ff55");
+            slctID("rect4Fill").setAttribute("fill", "#ffff55");
+            slctID("rect5Fill").setAttribute("fill", "#b755ff");
+		}
+        
+        //time to ghost
+		function ghostingDemo() {
+			slctID("rect1Fill").setAttribute("fill", "none");
+			slctID("rect2Fill").setAttribute("fill", "none");
+			slctID("rect3Fill").setAttribute("fill", "none");
+			slctID("rect4Fill").setAttribute("fill", "none");
+			slctID("rect5Fill").setAttribute("fill", "none");
+		}
+
+	</script>
+	<p class="txt_center">©Copyright 2016 Nicolas "Sinkeil" Bourgarel. </p>
+</body>
+
+</html>

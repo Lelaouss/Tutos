@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Titre de la page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+
+<h2>COOOOOL LES TABLEAUX DE VOITURES</h2>
+
+</header>
+<div id = "contenu_tab">
+    <table id="tabl">
+        <tr id = "champs" >
+            <td>N° commande</td>
+            <td>Marque</td>
+            <td>Model</td>
+            <td>Type</td>
+            <td>Nombre portes</td>
+            <td>Moteur</td>
+            <td>Options</td>
+            <td>Prix</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>     
+</div>
+
+<div id = "contenu_formulaire">
+    <form id = "formulaire">
+        <div id = "form1">
+            <label>N° de commande</label>
+            <input id ="commande" class = "block tri" type="text" name="commande" value="" disabled>
+
+            <label>Marque</label>
+            <select id = "marque" class = "block tri" name="marque">
+                <option value="Peugeot">Peugeot</option>
+                <option value="Renault">Renault</option>
+                <option value="Bmw">BMW</option>   
+                <option value="Mercedes">Mercedes</option>
+            </select>
+
+            <label>modèle</label>
+            <select id = "model" class = "block tri" name="model"></select>
+
+            <label>type</label>
+            <select id="type" class = "block tri" name="type">
+                <option value = "Break">Break</option>
+                <option value = "Cabriolet">Cabriolet</option>
+                <option value = "Citadine">Citadine</option>
+                <option value = "Berline">Berline</option>
+            </select>
+        </div>
+
+        <div id = "form2">   
+            <div class = "portes tri">
+                <label>nombre de portes</label><br/>
+                    <label>3 portes</label>
+                    <input id = "porte" class = "align" type="radio" name="porte" value ="3"><br/>
+                    <label>5 portes</label>
+                    <input id = "porte2" class = "align" type="radio" name="porte" value ="5">
+            </div>
+
+            <label>Moteur</label>
+            <select id="moteur" class = "block tri" name="moteur">
+                <option value = "1.6L">1.6L</option>
+                <option value = "1.8L">1.8L</option>
+                <option value = "2.0L">2.0L</option>
+                <option value = "2.2L">2.2L</option>
+            </select>
+
+            <div class = "option tri">
+                    <label class = "marge" for ="clim">Climatisaton</label>
+                    <input class = "align" type = "checkbox" id="clim" name="clim"><br/>
+                    <label class = "marge" for ="cuir">Cuir</label>
+                    <input class = "align" type = "checkbox" id="cuir" name="cuir"><br/>
+                    <label class = "marge" for = "vitre">vitres teintées</label>
+                    <input class = "align" type = "checkbox" id="vitre" name="vitre"><br/>
+            </div>
+        </div>
+        <div id = "form3">   
+            <label>Prix</label>
+            <input id = "prix" class = "block tri" type = "text" name ="prix" value ="">
+
+            <label>couleur</label>
+            <select id = "color" class = "block tri" type = "text" name ="color" value ="">
+                <option value = "Vert">Vert</option>
+                <option value = "Rouge">Rouge</option>
+                <option value = "Jaune">Jaune</option>
+                <option value = "Noir">Noir</option>
+                <option value = "Gris">Gris</option>
+            </select>
+
+            <input id="valider" class="ajouter" type="button" name ="button" value ="ajouter">
+            <input id="supprimer" class="supprimer" type="button" name ="button" value ="Supprimer">
+            <input id="reset" class="reset" type="button" name ="button" value ="reset">
+        </div>
+
+    </form>
+
+</div>
+<script type = "text/javascript" src ="formulaire.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>test d'AngularJS</title>
+    <link rel="stylesheet" href="index.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script type="text/javascript" src="app/myApp.js"></script>
+</head>
+
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="myCtrl">
+            <input type="text" ng-model="age" /> je suis {{majorite()}}
+        </div>
+    </div>
+</body>
+
+</html>

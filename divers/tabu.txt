@@ -1,0 +1,39 @@
+<input type="radio" name="sexe" value="H">&nbsp;Homme
+<br>
+<input type="radio" name="sexe" value="F">&nbsp;Femme
+
+// ETAPE 1
+$nombre1 = $_POST["nb1"];
+if ($nombre1 > 0){
+	$var1 = $nombre1. " est positif";
+} else {
+	$var1 = $nombre1. " est négatif";
+}
+
+// ETAPE 2 : \n en fin de ligne pour les sauts
+$nombre1 = $_POST["nb1"];\n
+if ($nombre1 > 0){\n
+	$var1 = $nombre1. " est positif";\n
+} else {\n
+	$var1 = $nombre1. " est négatif";\n
+}\n
+
+// ETAPE 3 : \t en début de ligne quand on souhaite des tabulations
+$nombre1 = $_POST["nb1"];\n
+if ($nombre1 > 0){\n
+\t$var1 = $nombre1. " est positif";\n
+} else {\n
+\t$var1 = $nombre1. " est négatif";\n
+}\n
+
+// ETAPE 4 : on backslash \ devant nos double quotes "
+$nombre1 = $_POST[\"nb1\"];\n
+if ($nombre1 > 0){\n
+\t$var1 = $nombre1. \" est positif\";\n
+} else {\n
+\t$var1 = $nombre1. \" est négatif\";\n
+}\n
+
+// ETAPE 5 : on met tout sur une ligne
+$nombre1 = $_POST[\"nb1\"];\nif ($nombre1 > 0){\n\t$var1 = $nombre1. \" est positif\";\n} else {\n\t$var1 = $nombre1. \" est négatif\";\n}\n
+

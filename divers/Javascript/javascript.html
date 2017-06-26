@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+        <title>Titre de ma page</title>
+        <meta charset="utf-8">
+		<style type="text/css">
+			.aBlack { color: Black; }
+			.aRed { color: Red; }
+		</style>
+		<script type="text/javascript">
+
+			function verifyFormulaire()	{
+				if (document.getElementById('nom').value == "")	{
+					alert("Veuillez renseigner votre nom svp");
+					return;
+				}
+			}
+			
+			function verifyOldFormulaire()	{
+				if (document.testForm.nom.value == "")	{
+					alert("Veuillez renseigner votre nom svp");
+					return;
+				}
+			}
+			
+			function exo_5_1()	{
+				var ma_phrase_finale= "Coucou";
+				alert("Ma phrase est " + ma_phrase_finale);
+			}
+			
+			function erazeField(objThis)	{
+				objThis.value= "";
+			}
+			
+			function cacheMadiv()	{
+				document.getElementById('div_exo_5_1').style.display= "none";
+			}
+
+			function afficheMaDiv()	{
+				document.getElementById('div_exo_5_1').style.display= "";
+			}
+			
+			function remplitdiv()	{
+				document.getElementById('div_texte_supplement').innerHTML= "<b>Coucou, vous me voyez ?</b>";
+			}
+			
+			function videDiv()	{
+				document.getElementById('div_texte_supplement').innerHTML= "";
+			}
+		</script>
+</head>
+
+<body>
+	<header></header>
+	<nav></nav>     
+	<article>
+		<p><a href="javascript:exo_5_1()">Tester ma fonction JavaScript "exo_5_1()"</a></p>	
+		<p><a href="javascript:table_de_7()">Tester ma fonction JavaScript "table_de_7()"</a></p>	
+		<form name="testForm">
+			<p><a href="#" onMouseOver="cacheMadiv()" onMouseOut="afficheMaDiv()"> affiche / Cache DIV 5.1</a></p>
+			<p><a href="#" onMouseOver="remplitdiv()" onMouseOut="videDiv()"> remplit / vide DIV 5.1</a></p>
+			<div>
+				<h1>Formulaire</h1>
+				<p>Votre nom : <input type="text" name="nom" id="nom" value="Votre nom" size="20" onClick="erazeField(this)"></p>
+				<p>Votre prénom : <input type="text" name="prenom" id="prenom" value="Votre prénom" size="20" onClick="erazeField(this)"></p>
+				<p><input type="button" value="Envoyer" onClick="verifyFormulaire()"></p>
+				<p><a href="javascript:verifyFormulaire()" onMouseOver="verifyFormulaire()">verifyFormulaire</a></p>
+			</div>
+			<div id="div_exo_5_1">
+				<h1>Exo 5.1</h1>
+				<div id="div_texte_supplement"></div>
+				<p><a href="javascript:exo_5_1()" class="aBlack" onMouseOver="this.className='aRed'" onMouseOut="this.className='aBlack'">exo_5_1</a></p>
+			</div>
+		</form>
+	</article>
+	
+	<footer></footer>
+</body>
+</html>

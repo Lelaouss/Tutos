@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>test d'AngularJS</title>
+    <link rel="stylesheet" href="index.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script type="text/javascript" src="app/myApp2.js"></script>
+</head>
+
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="myCtrl">
+            <input ng-model="age" type="text" />
+            <br/>
+            <br/>J'apparais ici grâce à la double accolade qui permet de récupérer une propriété du scope. {{age}}
+            <p ng-class="classeGras">J'apparait ici grace à la directive ng-bind: <span ng-bind="age"></span></p>
+            saisissez le mot "gras" pour mettre en gras le texte
+            <input type="text" ng-model="classeGras" </div>
+            <p ng-mouseenter="count= count + 1" ng-init="count=0"> la souris est passé {{count}} fois sur cette phrase </p>
+            <div>Mon menu</div>
+            <ul>
+                <li ng-repeat="menu in menus">
+                    {{menu}}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

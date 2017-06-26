@@ -1,0 +1,19 @@
+.gras {
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+    margin-left: 10px;
+    border: 1px solid black;
+    padding: 5px;
+    background-color: bisque;
+}
+
+li:hover {
+    cursor: pointer;
+}

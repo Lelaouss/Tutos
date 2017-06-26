@@ -1,0 +1,158 @@
+GIT
+
+///////////////////////// Config \\\\\\\\\\\\\\\\\\\\\\
+
+Entrer son nom, adresse mail:
+	-> git config --global user.name "pseudo"
+	-> git config --global user.email "adresse_mail"
+Passer le color ui à true:
+	-> git config color.ui "true"
+Forcer le rebase lors des push:
+	-> git config --global branch.autosetuprebase "always"
+
+
+///////////////////////// Projet \\\\\\\\\\\\\\\\\\\\\\\
+
+Initialiser un dossier (être dans le dossier):
+	-> git init
+
+Créer un dossier:
+	-> mkdir "mon_dossier"
+
+Créer un fichier:
+	-> touch "mon_fichier.extension" ou New-Item -Name "nom_fichier.extension"
+
+Connaître état du dossier:
+	-> git status
+
+Voir une version grafique de son dépôt GIT:
+	-> ungit
+
+Mettre en tracklist (stage) un fichier:
+	-> git add "nom_fichier.extension"
+Mettre en tracklist plusieurs fichiers:
+	-> git add "*.html" (ajoute tous les nouveaux .html)
+Mettre en tacklist tous les fichiers du dossier:
+	-> git add --all
+Mettre en tacklist tous les fichiers du dossier (sans ceux qui ont été supprimés):
+	-> git add .
+
+Enlever de la tracklist (unstage) un fichier:
+	-> git reset HEAD "nom_fichier.extension" ou git reset -- "nom_fichier.extension"
+
+Faire un commit pour sauvegarder les modifications:
+	-> git commit (ouverture de vim -> faire "i" -> écrire "mon_message_de_commit" -> "echap" -> faire ":wq")
+	-> ou git commit -m "mon_message_de_commit" (si le message = 1 ligne)
+
+Faire un commit sans avoir mis en tracklist (stage):
+	->git commit -a -m "mon_message_de_commit"
+
+Créer un fichier où on liste tous les fichiers à ignorer pour ne pas les commit:
+	-> touch .gitignore (éditer et y inscrire le "nom" ou "*.extension" des fichiers à ignorer)
+
+Connaître tous les commit fait:
+	-> git log
+Voir seulement les "n" derniers commit faits:
+	-> git log -n "n"
+Les voir sur une seule ligne:
+	-> git log --oneline
+Voir seulement ceux concernant un fichier "X":
+	-> git log -p "X.extension" (faire q pour quitter)
+
+Voir les modifications apportées sur tous les fichiers depuis leur dernier commit:
+	-> git diff
+
+Revenir en arrière sur un commit donné (en spectateur sans pouvoir de modification):
+	-> git checkout "numero_commit"
+Revenir dans le présent (quitter le mode spectateur):
+	-> git checkout master
+
+Revenir en arrière sur un commit donné (en autorisant la modification):
+	-> git checkout "numero_commit" "nom_fichier.extension"
+Revenir dans le présent (quitter le mode modification du passé):
+	-> git checkout master "nom_fichier.extension"
+
+Défaire ce qui a été fait sur un certain commit:
+	-> git revert "numero_commit" (entrer un nom pour le noouveau commit ou laisser avec revert en début de phrase)
+
+Revenir en arrière sur le projet complet en supprimant tout ce qui a été fait et non commit depuis (attention impossibilité de récupérer les modifications défaites ensuite !!!):
+	-> git reset --hard
+
+Revenir en arrière sur un certain commit en laissant en stage les modifications faites depuis ce commit (cela efface le log de tous les commit fait depuis mais garde les modifications des fichiers en stage):
+	-> git reset "numero_commit" (si on ajoute --hard cela efface aussi les modifications)
+
+Revenir d'un seul ou plusieurs commit en arrière en laissant les modifications en stage:
+	-> git reset HEAD^ --soft (un "^" correspond à une fois en arrière)
+Revenir d'un seul ou plusieurs commit en arrière en laissant les modifications mais sans les stage:
+	-> git reset HEAD^ --mixed
+Revenir d'un seul ou plusieurs commit en arrière en supprimant complètement les modifications:
+	-> git reset HEAD^ --hard
+
+Créer une nouvelle branche de travail:
+	-> git branch "nom_branche"
+Voir la liste des branches:
+	-> git branch
+Travailler sur cette nouvelle branche:
+	-> git checkout "nom_branche"
+Rassembler une branche sur ma branche principale (se mettre sur la branche master):
+	-> git merge "nom_branche_a_rassembler"
+Supprimer une branche une fois qu'elle a été rassemblée:
+	-> git branch -d "nom_branche"
+Basculer les commit faits sur une branche (on se place sur la branche à rapatrier):
+	-> git rebase "nom_branche_sur_laquelle_on_veut_rapatrier"
+Si on veut par exemple rassembler les commit de cette branche avant de la rapatrier:
+	-> git rebase -i "nom_branche_sur_laquelle_on_veut_rapatrier"
+	-> passer le commit à fusionner en "squash" au lieu de "pick" pour fusionner avec celui du dessus
+
+Changer le message du dernier commit (si on a fait des modifs que l'on ne veut pas réecrire de message de commit spécifique pour ces modifs):
+	-> git commit --amend
+
+Réécrire ses commit (que en local, si déjà publié ne pas le faire) pour les fusionner par exemple:
+	-> git rebase -i HEAD~"nombre_de_commit_précédents"
+
+
+Remiser son projet (revenir en arrière sur le dernier commit mais garder de côté les modifs en cours):
+	-> git stash
+Mettre un nom à son stash:
+	-> git stash save "nom_du_stash"
+Voir la liste de ce qui est remisé:
+	-> git stash list
+Voir ce à quoi correspond un remisage:
+	-> git stash show "nom_du_stash" -p
+Récupérer ce qui a été remisé avec en plus les modifs faites depuis:
+	-> git stash apply
+Supprimer ce qui a été remisé:
+	-> git stash drop
+Récupérer et supprimer ce qui a été remisé en même temps:
+	-> git stash pop "nom_du_stash"
+Appliquer le remisage sur une autre branche que l'on crée:
+	-> git stash branch "nom_de_la_branche"
+Mettre en remise un fichier non tracké (stage):
+	-> git stash -u
+
+//////////////////////// Centraliser le dépôt \\\\\\\\\\\\\\\\\\\\\\\\\
+
+Initialiser un projet GIT sans dossier de travail (se placer dans le dossier à remote au préalable)	:
+	-> git init --bare
+Créer un remote:
+	-> git remote add "nom_remote" "nom_dossier_à_remote"
+Voir liste des remote:
+	-> git remote -v
+Renomer un remote:
+	-> git remote rename "nom_origine" "nom_nouveau"
+Voir les branches disponibles sur le remote:
+	-> git branch -r
+Créer une branche et la remote:
+	-> git branch "nom_branche"
+	-> git push "nom_remote" "nom_branche"
+Supprimer une branche du remote:
+	-> git branch -d "nom_branche"
+	-> git push "nom_remote" --delete "nom_branche"
+Récupérer les commit qui ont été fait par d'autres sur la branche distante:
+	-> git pull "nom_remote" "nom_branche"
+Récupérer le projet avec tous ses commit (cas du nouveau collaborateur):
+	-> git clone "chemin_projet" "nom_à_donner" depth 1 ("depth 1" correspond au nombre de commit à récupérer)
+
+
+Générer une clé SSH (depuis un cmd):
+	-> ssh-keygen -t rsa -C "adresse_mail"

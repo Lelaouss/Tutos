@@ -1,0 +1,74 @@
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Création dynamique formulaire JS</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Création dynamique formulaire JS">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- main css and js -->
+        <script type="text/javascript">
+            function checkValues()  {
+                var iNBFields= document.getElementById('iNBFields').value;
+                var iNote, i, sPlurielNeg, sPlurielPos;
+                var iNBNegatif= 0;
+                var iNBPositif= 0;
+                for (i= 0; i<iNBFields; i++)    {
+                    iNote= document.getElementById('iNote'+i).value;
+                    if (!(isNaN(iNote)) && (iNote != ""))   {
+                        if (iNote < 0)  {
+                            iNBNegatif++;
+                        }  else  {
+                            iNBPositif++;
+                        }
+                    }
+                }
+                sPlurielNeg= (iNBNegatif > 1) ? "s" : "";
+                sPlurielPos= (iNBPositif > 1) ? "s" : "";
+                document.getElementById('div_resultat').innerHTML= "<br>" + iNBNegatif + " nombre" + sPlurielNeg + " négatif" + sPlurielNeg + " et " + iNBPositif + " nombre" + sPlurielPos + " positif" + sPlurielPos + ".";
+            }
+        
+            function createForm()   {
+                document.getElementById('div_content').innerHTML= "";
+                var iNBFields= document.getElementById('iNBFields').value;
+                if (iNBFields == "") { return; }
+                    
+                var i;
+                
+                var sHTML= "";
+                for (i= 0; i<iNBFields; i++)    {
+                    sHTML+= "Note n°" + ((i+1)*1) + " : ";
+                    sHTML+= "<input type=\"text\" name=\"iNote" + i + "\" id=\"iNote" + i + "\" onKeyUp=\"checkValues()\"><br>";
+                }
+                sHTML+= "<div id=\"div_resultat\"></div>";
+                sHTML+= "<br><input type=\"submit\" value=\"ENVOYER PHP\">";
+                document.getElementById('div_content').innerHTML= sHTML;
+            }
+        </script>
+    </head>
+
+<body>
+
+    <div id="page">
+        <header><!-- Entête de la zone considérée --></header>
+
+        <nav><!-- Nav. principale de la page --></nav>
+
+        <aside><!-- Les à-cotés de la page --></aside>
+
+        <!-- Contenu textuel de la page -->
+        <section>
+            <form action="crea_form_dynamique_js.php" method="POST">
+                Nombre de notes à saisir : 
+                <input type="text" name="iNBFields" id="iNBFields" onKeyUp="createForm()">
+                <br><br>
+                <div id="div_content"></div>
+            </form>
+        </section>
+
+        <footer><!-- Pied-de-page de la page --></footer>
+    </div>
+
+</body>
+</html>
+
